@@ -45,7 +45,9 @@ class FormComponent extends Component {
 
   validate = () => {
     let isError = false;
-    const errors = {};
+    const errors = {
+      emailError: ""
+    };
     if (this.state.email.length === 0) {
       console.log(`hi`);
       isError = true;
@@ -65,8 +67,16 @@ class FormComponent extends Component {
   onSubmit = event => {
     event.preventDefault();
     // console.log(this.state.validation.email.test.length);
-    const err = this.validate(event);
     alert(`${this.state.firstname} ${this.state.lastname}\n${this.state.text}`);
+    const err = this.validate(event);
+    if (!err) {
+      this.setState({
+        firstName: "",
+        lastName: "",
+        email: "",
+        emailError: ""
+      });
+    }
   };
 
   render() {
