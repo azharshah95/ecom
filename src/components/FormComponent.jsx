@@ -14,23 +14,12 @@ import React, { Component } from "react";
 class FormComponent extends Component {
   state = {
     email: "",
-    emailError: "",
     firstname: "",
     lastname: "",
-    text: "",
-    validation: {
-      email: {
-        isPresent: false,
-        test: ""
-      }
-    }
+    text: ""
   };
 
   onChangeEmail = event => {
-    if (this.state.email.length === 0) {
-      this.setState({ test: "Enter Email" });
-    }
-
     this.setState({ email: event.target.value });
   };
   onChangeFirstName = event => {
@@ -43,48 +32,17 @@ class FormComponent extends Component {
     this.setState({ text: event.target.value });
   };
 
-  validate = () => {
-    let isError = false;
-    const errors = {
-      emailError: ""
-    };
-    if (this.state.email.length === 0) {
-      console.log(`hi`);
-      isError = true;
-      errors.emailError = "Enter Email";
-    }
-
-    if (isError) {
-      this.setState({
-        ...this.state,
-        ...errors
-      });
-    }
-
-    return isError;
-  };
-
   onSubmit = event => {
     event.preventDefault();
     // console.log(this.state.validation.email.test.length);
     alert(`${this.state.firstname} ${this.state.lastname}\n${this.state.text}`);
-    const err = this.validate(event);
-    if (!err) {
-      this.setState({
-        firstName: "",
-        lastName: "",
-        email: "",
-        emailError: ""
-      });
-    }
   };
 
   render() {
-    // console.log(this.props);
     return (
       <div>
         <h5>Form</h5>
-        <form onSubmit={this.onSubmit} noValidate>
+        <form onSubmit={this.onSubmit}>
           <label htmlFor="email">
             <span style={{ color: "red" }}>*</span>Email:
           </label>
@@ -94,10 +52,7 @@ class FormComponent extends Component {
             name="email"
             value={this.state.email}
             placeholder=""
-            aria-required="true"
-            errortext={this.state.validation.email.test}
             onChange={this.onChangeEmail}
-            required
           />
           <span>{this.state.emailError}</span>
           <br />
@@ -110,8 +65,6 @@ class FormComponent extends Component {
             name="firstname"
             value={this.state.firstname}
             placeholder=""
-            required
-            aria-required="true"
             onChange={this.onChangeFirstName}
           />
           <br />
@@ -124,8 +77,6 @@ class FormComponent extends Component {
             name="lastname"
             value={this.state.lastname}
             placeholder=""
-            required
-            aria-required="true"
             onChange={this.onChangeLastName}
           />
           <br />
@@ -146,5 +97,4 @@ class FormComponent extends Component {
     );
   }
 }
-
 export default FormComponent;
