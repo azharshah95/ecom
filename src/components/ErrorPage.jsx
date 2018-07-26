@@ -1,16 +1,14 @@
 import React, { Component } from "react";
-import Routes from "./Routes";
 
-class App extends Component {
+class ErrorPage extends Component {
   state = {};
-
   render() {
     return (
       <div>
-        <Routes />
+        <h2>Error: Routes not defined</h2>
       </div>
     );
   }
 }
 
-export default App;
+export default ErrorPage;
