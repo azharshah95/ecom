@@ -18,7 +18,11 @@ class Routes extends Component {
           <Route path="/login" component={Login} exact />
           <Route path="/about" component={About} exact />
           <Route path="/topics" component={Topics} exact />
-          <Route path="/topics/:topicId" component={Topic} exact />
+          <Route
+            path="/topics/:topicId(rendering|components)"
+            component={Topic}
+            exact
+          />
           <Route component={ErrorPage} exact />
         </Switch>
       </div>

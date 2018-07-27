@@ -5,7 +5,7 @@ import { Link, Route } from "react-router-dom";
 class Topics extends Component {
   state = {};
   render() {
-    console.log(this.props.match);
+    //console.log(this.props.match);
     return (
       <div>
         <h3>Topics Page</h3>
@@ -22,7 +22,10 @@ class Topics extends Component {
             <Link to={`${this.props.match.url}/components`}>Components</Link>
           </li>
         </ul>
-        <Route path={`${this.props.match.url}/:topicId`} component={Topic} />
+        <Route
+          path={`${this.props.match.url}/:topicId(rendering|components)`}
+          component={Topic}
+        />
       </div>
     );
   }
