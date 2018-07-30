@@ -1,19 +1,24 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-// import Topics from "./Topics";
+//import { Link } from "react-router-dom";
+import { Provider } from "react-redux";
+
+import Posts from "./Posts";
+import Postform from "./Postform";
+
+import store from "./store";
 
 class Home extends Component {
   state = {};
   render() {
     return (
-      <div>
-        <h3>Home Page</h3>
-        <ul>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-        </ul>
-      </div>
+      <Provider store={store}>
+        <div className="container">
+          <h3>Home Page</h3>
+          <Postform />
+          <hr />
+          <Posts />
+        </div>
+      </Provider>
     );
   }
 }

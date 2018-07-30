@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import Home from "./components/Home";
-import About from "./components/About";
 import ErrorPage from "./components/ErrorPage";
 import { Route, Switch } from "react-router-dom";
+import Posts from "./components/Posts";
+import Postform from "./components/Postform";
 //BroswerRouter imported and used in index.js
 class Routes extends Component {
   state = {};
@@ -12,7 +13,8 @@ class Routes extends Component {
       <div>
         <Switch>
           <Route path="/" component={Home} exact />
-          <Route path="/about" component={About} exact />
+          <Route path="/posts" component={Posts} exact />
+          <Route path="/postform" component={Postform} exact />
           <Route component={ErrorPage} exact />
         </Switch>
       </div>
